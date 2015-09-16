@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div id="loading" hidden>
+        <div class="dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <filter id="goo">
+                    <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="12"/>
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+                                   result="goo"/>
+                </filter>
+            </defs>
+        </svg>
+    </div>
+    <div id="content">
+
+        {% if validations %}
+            <div class="row">
+                <div class="large-4 large-offset-4 columns">
+                    <p class="error"><strong>Error:</strong> {{ validations }}</p>
+                </div>
+            </div>
+        {% endif %}
+        <div class="row">
+            <div class="large-4  columns">
+                <form action="{{ url_for("search") }}" method="post" onsubmit="return loading();">
+                    <div class="row">
+
+                        <p>Drag the marker on the map or get co ordinates <a href="http://latlong.net">here</a></p>
+
+                    </div>
+
+                    <div class="row">
+
+                        <label>Latitude
+                            <input type="number" name="latitude" step="any" id="lat" placeholder="47.651968" required/>
+                        </label>
+                    </div>
+
+                    <div class="row">
+
+                        <label>Longitude
+                            <input type="number" name="longitude" step="any" id="long" placeholder="9.478485" required/>
+                        </label>
+                    </div>
+
+                    <div class="row">
+
+                        <label>Start Date
+                            <input type="date" name="start_date" id="after_long" placeholder="2015-01-08" required/>
+                        </label>
+                    </div>
+
+                    <div class="row">
+
+                        <label>End Date
+                            <input type="date" name="end_date" placeholder="2015-01-13" required/>
+                        </label>
+                    </div>
+
+                    <div class="row">
+
+                        <label>Start Time
+                            <input type="time" name="start_time" placeholder="12:00" required/>
+                        </label>
+                    </div>
+
+                    <div class="row">
+
+                        <label>End Time
+                            <input type="time" name="end_time" placeholder="07:00" required/>
+                        </label>
+                    </div>
+
+                    <div class="row">
+
+                        <button class="button small">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+            <div class="large-8 columns">
+                <div id='map_canvas'></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

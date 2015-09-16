@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/normalize.css" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.css" />
+    <link rel="stylesheet" href="{{url_for('static', filename='app.css')  }}" />
+</head>
+<body>
+<h1>CSI:<span> C</span>Y<span>B</span>E<span>R</span><sub>Built with <span style="color:red;">&#10084;</span> by <a href="http://rajaselvan.in" target="_blank">Rajaselvan</a></sub>
+</h1>
+
+{% block body %}{% endblock %}
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/foundation.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

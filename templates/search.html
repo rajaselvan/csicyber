@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div class="row">
+    <div class="large-9 large-offset-1 columns">
+    <ul class="large-block-grid-3">
+        {% for entry in result %}
+            <li><a href="{{ entry.url }}" target="_blank"><img class="th" src="{{ entry.image }}"/></a></li>
+        {% else %}
+            <h2 class="text-center" style="margin-top: 40px; font-family: 'Raleway'";>Nothing found!</h2>
+        {% endfor %}
+    </ul>
+    </div>
+    </div>
+{% endblock %}
